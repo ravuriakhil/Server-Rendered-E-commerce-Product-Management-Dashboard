@@ -31,7 +31,6 @@ export default function ProductList({ initialProducts = [] }: ProductListProps) 
       try {
         await deleteProduct.mutateAsync(id);
       } catch (error) {
-        // Error is handled by the mutation
       }
     }
   };

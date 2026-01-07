@@ -3,7 +3,6 @@ import connectDB from '@/lib/db';
 import Product from '@/models/Product';
 import { requireAdmin } from '@/lib/auth';
 
-// GET all products
 async function getProducts(req: NextRequest) {
   try {
     await connectDB();
@@ -53,7 +52,6 @@ async function getProducts(req: NextRequest) {
   }
 }
 
-// POST create new product
 async function createProduct(req: NextRequest) {
   try {
     const data = await req.json();

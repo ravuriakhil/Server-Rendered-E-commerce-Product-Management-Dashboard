@@ -16,7 +16,6 @@ async function handler(req: NextRequest, currentUser: any) {
 
     await connectDB();
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email: email.toLowerCase() });
 
     if (existingUser) {
@@ -26,7 +25,6 @@ async function handler(req: NextRequest, currentUser: any) {
       );
     }
 
-    // Create new user
     const user = await User.create({
       email: email.toLowerCase(),
       password,
@@ -51,7 +49,7 @@ async function handler(req: NextRequest, currentUser: any) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24 * 7,
     });
 
     return response;

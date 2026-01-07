@@ -32,7 +32,7 @@ export default function StatsCards({ stats }: StatsCardsProps) {
     {
       title: 'Total Sales',
       value: stats.totalSales,
-      icon: AlertCircle, // Using AlertCircle as a generic indicator or change to DollarSign if available
+      icon: AlertCircle,
     },
   ];
 

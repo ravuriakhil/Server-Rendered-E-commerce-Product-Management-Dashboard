@@ -77,16 +77,16 @@ export default async function DashboardPage() {
         <StatsCards stats={stats} />
 
         <div className="mt-8 grid grid-cols-1 gap-6">
-          {/* Sales and Stock Charts Row */}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <SalesChart categoryStats={stats.categoryStats} />
             <StockChart products={stats.allProducts || []} />
           </div>
 
-          {/* Top Products Chart */}
+
           <TopProductsChart products={stats.allProducts || []} />
 
-          {/* Recent Products */}
+
           <div className="bg-surface border border-border p-6 rounded-lg">
             <h3 className="text-lg font-semibold mb-4 text-text-primary">Recent Products</h3>
             <ProductList initialProducts={products} />

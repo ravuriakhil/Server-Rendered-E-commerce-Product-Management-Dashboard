@@ -100,7 +100,6 @@ export function requireAuth(handler: (req: NextRequest, user: IUser) => Promise<
 }
 
 export function requireAdmin(handler: (req: NextRequest, user: IUser) => Promise<Response>) {
-  // Since all users are admins, this is just an alias for requireAuth
   return requireAuth(handler);
 }
 

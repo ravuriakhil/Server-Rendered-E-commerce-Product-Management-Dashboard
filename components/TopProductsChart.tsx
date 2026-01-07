@@ -23,7 +23,6 @@ interface TopProductsChartProps {
 }
 
 export default function TopProductsChart({ products }: TopProductsChartProps) {
-  // Top 10 products by sales
   const topSalesProducts = [...products]
     .sort((a, b) => b.sales - a.sales)
     .slice(0, 10)
@@ -37,8 +36,7 @@ export default function TopProductsChart({ products }: TopProductsChartProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow">
       <h3 className="text-lg font-semibold text-black mb-4">Top Selling Products</h3>
-      
-      {/* Top Products by Sales */}
+
       <div className="mb-6">
         <h4 className="text-sm font-medium text-gray-700 mb-3">Top 10 Products by Sales</h4>
         <ResponsiveContainer width="100%" height={300}>
@@ -53,7 +51,6 @@ export default function TopProductsChart({ products }: TopProductsChartProps) {
         </ResponsiveContainer>
       </div>
 
-      {/* Sales vs Stock Comparison */}
       <div>
         <h4 className="text-sm font-medium text-gray-700 mb-3">Sales vs Stock (Top 10)</h4>
         <ResponsiveContainer width="100%" height={300}>

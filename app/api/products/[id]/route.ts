@@ -3,7 +3,6 @@ import connectDB from '@/lib/db';
 import Product from '@/models/Product';
 import { requireAdminWithParams } from '@/lib/auth';
 
-// GET single product
 async function getProduct(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     await connectDB();
@@ -27,7 +26,6 @@ async function getProduct(req: NextRequest, { params }: { params: { id: string }
   }
 }
 
-// PUT update product
 async function updateProduct(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     const data = await req.json();
@@ -62,7 +60,6 @@ async function updateProduct(req: NextRequest, { params }: { params: { id: strin
   }
 }
 
-// DELETE product
 async function deleteProduct(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     await connectDB();

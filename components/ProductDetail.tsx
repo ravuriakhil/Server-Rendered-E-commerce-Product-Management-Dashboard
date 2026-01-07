@@ -21,7 +21,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // Update editing state if query param changes
     if (searchParams.get('edit') === 'true' && !isEditing) {
       setIsEditing(true);
     }

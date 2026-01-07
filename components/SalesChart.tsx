@@ -41,8 +41,7 @@ export default function SalesChart({ categoryStats }: SalesChartProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow">
       <h3 className="text-lg font-semibold text-black mb-4">Sales Analytics</h3>
-      
-      {/* Sales by Category Bar Chart */}
+
       <div className="mb-6">
         <h4 className="text-sm font-medium text-gray-700 mb-3">Sales by Category</h4>
         <ResponsiveContainer width="100%" height={300}>
@@ -58,7 +57,6 @@ export default function SalesChart({ categoryStats }: SalesChartProps) {
         </ResponsiveContainer>
       </div>
 
-      {/* Sales Distribution Pie Chart */}
       <div>
         <h4 className="text-sm font-medium text-gray-700 mb-3">Sales Distribution by Category</h4>
         <ResponsiveContainer width="100%" height={300}>

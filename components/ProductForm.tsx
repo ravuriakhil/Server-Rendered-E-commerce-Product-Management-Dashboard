@@ -91,13 +91,11 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
       onSuccess?.();
       router.push('/dashboard/products');
     } catch (error) {
-      // Error is handled by the mutation
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Progress Steps */}
       <div className="mb-8">
         <div className="flex space-x-8 border-b border-border mb-8">
           {steps.map((step) => (
@@ -105,8 +103,6 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
               key={step.id}
               type="button"
               onClick={() => {
-                // Optional: Allow clicking to navigate if we want, or just visual
-                // For now, let's keep it just visual or strictly linear as per previous logic
               }}
               className={`pb-4 text-sm font-medium border-b-2 transition-colors ${currentStep === step.id
                 ? 'border-primary text-primary'
@@ -119,7 +115,6 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
         </div>
       </div>
 
-      {/* Step 1: Basic Information */}
       {currentStep === 1 && (
         <div className="space-y-4">
           <div>
@@ -166,7 +161,6 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
         </div>
       )}
 
-      {/* Step 2: Pricing & Inventory */}
       {currentStep === 2 && (
         <div className="space-y-4">
           <div>
@@ -227,7 +221,6 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
         </div>
       )}
 
-      {/* Step 3: Images & Status */}
       {currentStep === 3 && (
         <div className="space-y-4">
           <div>
@@ -278,7 +271,6 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
         </div>
       )}
 
-      {/* Navigation Buttons */}
       <div className="flex justify-between">
         <button
           type="button"

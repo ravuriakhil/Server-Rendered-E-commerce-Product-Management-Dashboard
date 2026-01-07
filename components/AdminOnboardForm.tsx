@@ -31,8 +31,6 @@ export default function AdminOnboardForm() {
 
   const onSubmit = async (data: AdminFormData) => {
     try {
-      // The register function from useAuth is a mutation.mutate function
-      // We need to use it differently - let's use axios directly for admin registration
       const axios = (await import('axios')).default;
       await axios.post('/api/auth/register', data, { withCredentials: true });
       setSuccess(true);
@@ -40,7 +38,6 @@ export default function AdminOnboardForm() {
       toast.success('User created successfully!');
       setTimeout(() => setSuccess(false), 5000);
     } catch (error: any) {
-      // Error handling
       console.error('Registration error:', error);
       toast.error(error.response?.data?.error || 'Failed to create user');
     }

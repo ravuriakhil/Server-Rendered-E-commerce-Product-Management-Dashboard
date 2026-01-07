@@ -37,7 +37,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
 
-            {/* Logo area */}
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center gap-2">
                 <div className="w-6 h-6 rounded bg-primary flex items-center justify-center">
@@ -46,7 +45,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <span className="font-semibold text-text-primary tracking-tight">E-COMMERCE</span>
               </div>
 
-              {/* Minimal Tabs Navigation */}
               <div className="hidden md:block ml-10">
                 <div className="flex items-baseline space-x-1">
                   {navigation.map((item) => {
@@ -72,7 +70,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </div>
             </div>
 
-            {/* User & Logout */}
             <div className="flex items-center gap-4">
               <div className="hidden sm:flex flex-col items-end mr-2">
                 <span className="text-xs text-text-secondary">Signed in as</span>

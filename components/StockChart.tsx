@@ -25,7 +25,6 @@ interface StockChartProps {
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
 export default function StockChart({ products }: StockChartProps) {
-  // Stock distribution by category
   const stockByCategory = products.reduce((acc, product) => {
     const category = product.category || 'Uncategorized';
     if (!acc[category]) {
@@ -41,7 +40,6 @@ export default function StockChart({ products }: StockChartProps) {
   }));
 
 
-  // Top products by stock
   const topStockProducts = [...products]
     .sort((a, b) => b.stock - a.stock)
     .slice(0, 10)
@@ -53,8 +51,7 @@ export default function StockChart({ products }: StockChartProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow">
       <h3 className="text-lg text-black font-semibold mb-4">Stock Metrics</h3>
-      
-      {/* Stock Distribution Pie Chart */}
+
       <div className="mb-6">
         <h4 className="text-sm font-medium text-gray-700 mb-3">Stock by Category</h4>
         <ResponsiveContainer width="100%" height={300}>
@@ -79,7 +76,6 @@ export default function StockChart({ products }: StockChartProps) {
         </ResponsiveContainer>
       </div>
 
-      {/* Top Products by Stock Bar Chart */}
       <div>
         <h4 className="text-sm font-medium text-gray-700 mb-3">Top 10 Products by Stock</h4>
         <ResponsiveContainer width="100%" height={300}>
