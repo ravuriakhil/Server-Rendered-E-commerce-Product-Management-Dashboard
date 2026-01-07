@@ -36,7 +36,7 @@ export default function TopProductsChart({ products }: TopProductsChartProps) {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-4">Top Selling Products</h3>
+      <h3 className="text-lg font-semibold text-black mb-4">Top Selling Products</h3>
       
       {/* Top Products by Sales */}
       <div className="mb-6">

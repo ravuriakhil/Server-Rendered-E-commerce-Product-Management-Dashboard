@@ -40,7 +40,7 @@ export default function SalesChart({ categoryStats }: SalesChartProps) {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-4">Sales Analytics</h3>
+      <h3 className="text-lg font-semibold text-black mb-4">Sales Analytics</h3>
       
       {/* Sales by Category Bar Chart */}
       <div className="mb-6">

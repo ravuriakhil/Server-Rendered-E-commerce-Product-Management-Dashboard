@@ -52,7 +52,7 @@ export default function StockChart({ products }: StockChartProps) {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-lg font-semibold mb-4">Stock Metrics</h3>
+      <h3 className="text-lg text-black font-semibold mb-4">Stock Metrics</h3>
       
       {/* Stock Distribution Pie Chart */}
       <div className="mb-6">
