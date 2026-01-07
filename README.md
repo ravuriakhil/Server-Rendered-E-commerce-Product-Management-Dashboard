@@ -1,6 +1,9 @@
 # Server-Rendered E-commerce Product Management Dashboard
-## Publicly Accessible Deployed Version Of The Application
-https://ssr-admin-dashboard-akhil.vercel.app
+## Live Deployment
+The application is deployed using Vercel, providing a publicly accessible production environment.
+Frontend and backend (Next.js API Routes) are hosted on the same platform, while MongoDB Atlas is used for cloud database storage and Cloudinary handles image uploads.
+
+Live URL: https://ssr-admin-dashboard-akhil.vercel.app
 ## Dummy Admin Credentials
 email address:- admin@example.com
 
