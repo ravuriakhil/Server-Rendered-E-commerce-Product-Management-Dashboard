@@ -82,9 +82,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     return (
       <div>
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Edit Product</h2>
+          <h2 className="text-2xl font-bold text-text-primary">Edit Product</h2>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-surface border border-border rounded-lg shadow-sm p-6">
           <ProductForm
             product={product}
             onSuccess={() => setIsEditing(false)}
@@ -95,117 +95,117 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   }
 
   return (
-    <div>
+    <div className="text-text-primary">
       <div className="mb-8 flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-900">{product.name}</h2>
+        <h2 className="text-2xl font-bold text-text-primary">{product.name}</h2>
         <div className="space-x-4">
           <button
             onClick={() => setIsEditing(true)}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
+            className="btn-primary"
           >
             Edit
           </button>
           <button
             onClick={handleDelete}
-            className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700"
+            className="btn-danger"
           >
             Delete
           </button>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="bg-surface border border-border rounded-lg shadow-sm overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
           <div>
             {product.images && product.images.length > 0 ? (
               <div className="space-y-4">
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  width={600}
-                  height={400}
-                  className="w-full h-96 object-cover rounded-lg"
-                />
+                <div className="w-full h-96 bg-black/20 rounded-lg flex items-center justify-center border border-border overflow-hidden relative">
+                  <Image
+                    src={product.images[0]}
+                    alt={product.name}
+                    fill
+                    className="object-contain p-2"
+                  />
+                </div>
                 {product.images.length > 1 && (
                   <div className="grid grid-cols-4 gap-2">
                     {product.images.slice(1).map((image, index) => (
-                      <Image
-                        key={index}
-                        src={image}
-                        alt={`${product.name} ${index + 2}`}
-                        width={150}
-                        height={150}
-                        className="w-full h-24 object-cover rounded-md"
-                      />
+                      <div key={index} className="relative h-24 bg-black/20 rounded-md border border-border overflow-hidden">
+                        <Image
+                          src={image}
+                          alt={`${product.name} ${index + 2}`}
+                          fill
+                          className="object-contain p-1"
+                        />
+                      </div>
                     ))}
                   </div>
                 )}
               </div>
             ) : (
-              <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-                <span className="text-gray-400">No images</span>
+              <div className="w-full h-96 bg-surface-hover rounded-lg flex items-center justify-center border border-border">
+                <span className="text-text-secondary">No images</span>
               </div>
             )}
           </div>
 
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Description</h3>
-              <p className="text-gray-700">{product.description}</p>
+              <h3 className="text-lg font-semibold text-text-primary mb-2">Description</h3>
+              <p className="text-text-secondary">{product.description}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <h4 className="text-sm font-medium text-gray-500">Price</h4>
-                <p className="text-2xl font-bold text-gray-900">₹{product.price.toFixed(2)}</p>
+                <h4 className="text-sm font-medium text-text-secondary">Price</h4>
+                <p className="text-2xl font-bold text-text-primary">₹{product.price.toFixed(2)}</p>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-gray-500">Stock</h4>
-                <p className="text-2xl font-bold text-gray-900">{product.stock}</p>
+                <h4 className="text-sm font-medium text-text-secondary">Stock</h4>
+                <p className="text-2xl font-bold text-text-primary">{product.stock}</p>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-gray-500">Category</h4>
-                <p className="text-lg font-semibold text-gray-900">{product.category}</p>
+                <h4 className="text-sm font-medium text-text-secondary">Category</h4>
+                <p className="text-lg font-semibold text-text-primary">{product.category}</p>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-gray-500">SKU</h4>
-                <p className="text-lg font-semibold text-gray-900">{product.sku}</p>
+                <h4 className="text-sm font-medium text-text-secondary">SKU</h4>
+                <p className="text-lg font-semibold text-text-primary">{product.sku}</p>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-gray-500">Status</h4>
+                <h4 className="text-sm font-medium text-text-secondary">Status</h4>
                 <span
-                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                    product.status === 'active'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
+                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${product.status === 'active'
+                    ? 'bg-green-900/20 text-green-400 border-green-900/30'
+                    : 'bg-red-900/20 text-red-400 border-red-900/30'
+                    }`}
                 >
                   {product.status}
                 </span>
               </div>
               <div className="col-span-2">
-                <h4 className="text-sm font-medium text-gray-500 mb-2">Sales</h4>
-                <p className="text-2xl font-bold text-gray-900 mb-3">{product.sales}</p>
+                <h4 className="text-sm font-medium text-text-secondary mb-2">Sales</h4>
+                <p className="text-2xl font-bold text-text-primary mb-3">{product.sales}</p>
                 <div className="flex gap-2 flex-wrap">
                   <input
                     type="number"
                     min="0"
                     value={salesInput}
                     onChange={(e) => setSalesInput(e.target.value)}
-                    placeholder="Enter amount"
-                    className="w-32 px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Amount"
+                    className="input-field w-32"
                   />
                   <button
                     onClick={handleAddSales}
                     disabled={isUpdatingSales || !salesInput}
-                    className="px-3 py-1.5 text-sm bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary bg-success hover:bg-success/80 ring-success disabled:opacity-50"
                   >
                     Add
                   </button>
                   <button
                     onClick={handleSetSales}
                     disabled={isUpdatingSales || !salesInput}
-                    className="px-3 py-1.5 text-sm bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary disabled:opacity-50"
                   >
                     Set
                   </button>

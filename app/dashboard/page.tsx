@@ -18,7 +18,7 @@ async function getProducts() {
 
 async function getStats() {
   await connectDB();
-  
+
   const [
     totalProducts,
     activeProducts,
@@ -58,7 +58,7 @@ async function getStats() {
 export default async function DashboardPage() {
   const headersList = headers();
   const cookieHeader = headersList.get('cookie');
-  
+
   const user = await getCurrentUserFromCookies(cookieHeader);
 
   if (!user) {
@@ -71,7 +71,7 @@ export default async function DashboardPage() {
     <DashboardLayout>
       <div className="px-4 py-6 sm:px-0">
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
+          <h2 className="text-2xl font-bold text-text-primary">Dashboard Overview</h2>
         </div>
 
         <StatsCards stats={stats} />
@@ -87,8 +87,8 @@ export default async function DashboardPage() {
           <TopProductsChart products={stats.allProducts || []} />
 
           {/* Recent Products */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-4">Recent Products</h3>
+          <div className="bg-surface border border-border p-6 rounded-lg">
+            <h3 className="text-lg font-semibold mb-4 text-text-primary">Recent Products</h3>
             <ProductList initialProducts={products} />
           </div>
         </div>

@@ -36,21 +36,21 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
     resolver: zodResolver(productSchema),
     defaultValues: product
       ? {
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          category: product.category,
-          stock: product.stock,
-          sku: product.sku,
-          status: product.status,
-          images: product.images || [],
-          sales: product.sales || 0,
-        }
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category,
+        stock: product.stock,
+        sku: product.sku,
+        status: product.status,
+        images: product.images || [],
+        sales: product.sales || 0,
+      }
       : {
-          status: 'active',
-          images: [],
-          sales: 0,
-        },
+        status: 'active',
+        images: [],
+        sales: 0,
+      },
   });
 
   const images = watch('images') || [];
@@ -68,7 +68,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
   const nextStep = async (e?: React.MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault();
     e?.stopPropagation();
-    
+
     const fields = steps[currentStep - 1].fields;
     const isValid = await trigger(fields as any);
 
@@ -99,40 +99,37 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {/* Progress Steps */}
       <div className="mb-8">
-        <nav aria-label="Progress">
-          <ol className="flex items-center">
-            {steps.map((step, stepIdx) => (
-              <li key={step.id} className={`${stepIdx !== steps.length - 1 ? 'pr-8 sm:pr-20' : ''} relative flex-1`}>
-                <div className="flex items-center">
-                  
-                  <span
-                    className={`ml-4 text-sm font-medium ${
-                      currentStep >= step.id ? 'text-indigo-600' : 'text-gray-500'
-                    }`}
-                  >
-                    {step.name}
-                  </span>
-                </div>
-                {stepIdx !== steps.length - 1 && (
-                  <div className="absolute top-4 left-8 right-0 h-0.5 bg-gray-300 -z-0" />
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <div className="flex space-x-8 border-b border-border mb-8">
+          {steps.map((step) => (
+            <button
+              key={step.id}
+              type="button"
+              onClick={() => {
+                // Optional: Allow clicking to navigate if we want, or just visual
+                // For now, let's keep it just visual or strictly linear as per previous logic
+              }}
+              className={`pb-4 text-sm font-medium border-b-2 transition-colors ${currentStep === step.id
+                ? 'border-primary text-primary'
+                : 'border-transparent text-text-secondary hover:text-text-primary'
+                }`}
+            >
+              {step.name}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Step 1: Basic Information */}
       {currentStep === 1 && (
         <div className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-1">
               Product Name *
             </label>
             <input
               {...register('name')}
               type="text"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.name && (
               <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -140,13 +137,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="description" className="block text-sm font-medium text-text-secondary mb-1">
               Description
             </label>
             <textarea
               {...register('description')}
               rows={4}
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.description && (
               <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>
@@ -154,13 +151,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="category" className="block text-sm font-medium text-text-secondary mb-1">
               Category *
             </label>
             <input
               {...register('category')}
               type="text"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.category && (
               <p className="mt-1 text-sm text-red-600">{errors.category.message}</p>
@@ -173,14 +170,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
       {currentStep === 2 && (
         <div className="space-y-4">
           <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="price" className="block text-sm font-medium text-text-secondary mb-1">
               Price (₹) *
             </label>
             <input
               {...register('price', { valueAsNumber: true })}
               type="number"
-              step="0.01"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.price && (
               <p className="mt-1 text-sm text-red-600">{errors.price.message}</p>
@@ -188,13 +184,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="stock" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="stock" className="block text-sm font-medium text-text-secondary mb-1">
               Stock Quantity *
             </label>
             <input
               {...register('stock', { valueAsNumber: true })}
               type="number"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.stock && (
               <p className="mt-1 text-sm text-red-600">{errors.stock.message}</p>
@@ -202,13 +198,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="sku" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="sku" className="block text-sm font-medium text-text-secondary mb-1">
               SKU (Stock Keeping Unit) *
             </label>
             <input
               {...register('sku')}
               type="text"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.sku && (
               <p className="mt-1 text-sm text-red-600">{errors.sku.message}</p>
@@ -216,13 +212,13 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="sales" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="sales" className="block text-sm font-medium text-text-secondary mb-1">
               Sales (Total units sold)
             </label>
             <input
               {...register('sales', { valueAsNumber: true })}
               type="number"
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             />
             {errors.sales && (
               <p className="mt-1 text-sm text-red-600">{errors.sales.message}</p>
@@ -235,7 +231,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
       {currentStep === 3 && (
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Product Images
             </label>
             <ImageUpload onUpload={handleImageUpload} />
@@ -265,12 +261,12 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           </div>
 
           <div>
-            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="status" className="block text-sm font-medium text-text-secondary mb-1">
               Status *
             </label>
             <select
               {...register('status')}
-              className="mt-1 block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="input-field max-w-md"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -288,7 +284,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           type="button"
           onClick={prevStep}
           disabled={currentStep === 1}
-          className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Previous
         </button>
@@ -301,7 +297,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
               e.stopPropagation();
               nextStep(e);
             }}
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            className="btn-primary"
           >
             Next
           </button>
@@ -309,7 +305,7 @@ export default function ProductForm({ product, onSuccess }: ProductFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50"
+            className="btn-primary disabled:opacity-50"
           >
             {isSubmitting ? 'Saving...' : product ? 'Update Product' : 'Create Product'}
           </button>

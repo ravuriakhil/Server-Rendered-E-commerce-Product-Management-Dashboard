@@ -1,5 +1,7 @@
 'use client';
 
+import { Package, Archive, TrendingUp, AlertCircle } from 'lucide-react';
+
 interface StatsCardsProps {
   stats: {
     totalProducts: number;
@@ -15,26 +17,22 @@ export default function StatsCards({ stats }: StatsCardsProps) {
     {
       title: 'Total Products',
       value: stats.totalProducts,
-      icon: '📦',
-      color: 'bg-blue-500',
+      icon: Package,
     },
     {
       title: 'Active Products',
       value: stats.activeProducts,
-      icon: '✅',
-      color: 'bg-green-500',
+      icon: Archive,
     },
     {
       title: 'Total Stock',
       value: stats.totalStock,
-      icon: '📊',
-      color: 'bg-purple-500',
+      icon: TrendingUp,
     },
     {
       title: 'Total Sales',
       value: stats.totalSales,
-      icon: '💰',
-      color: 'bg-yellow-500',
+      icon: AlertCircle, // Using AlertCircle as a generic indicator or change to DollarSign if available
     },
   ];
 
@@ -43,15 +41,15 @@ export default function StatsCards({ stats }: StatsCardsProps) {
       {cards.map((card, index) => (
         <div
           key={index}
-          className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
+          className="bg-surface border border-border rounded-lg p-6 hover:bg-surface-hover/50 transition-colors duration-200"
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">{card.title}</p>
-              <p className="text-2xl font-bold text-gray-900 mt-2">{card.value}</p>
+              <p className="text-sm font-medium text-text-secondary">{card.title}</p>
+              <p className="text-2xl font-semibold text-text-primary mt-2">{card.value}</p>
             </div>
-            <div className={`${card.color} rounded-full p-3 text-2xl`}>
-              {card.icon}
+            <div className={`p-2 rounded-md bg-surface border border-border`}>
+              <card.icon className="h-5 w-5 text-text-secondary" />
             </div>
           </div>
         </div>
