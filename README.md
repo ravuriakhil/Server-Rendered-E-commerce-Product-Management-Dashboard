@@ -1,5 +1,9 @@
 # Server-Rendered E-commerce Product Management Dashboard
-
+## Publicly Accessible Deployed Version Of The Application
+https://ssr-admin-dashboard-akhil.vercel.app
+## Dummy Admin Credentials
+email address:- admin@example.com
+password:- admin123
 ## Project Overview
 
 A comprehensive server-side rendered (SSR) administrative dashboard for managing products in an e-commerce system. Built with Next.js 14, this application provides administrators with a powerful interface to manage product data, view analytics, and handle inventory. The dashboard features fast page load times, improved SEO performance, and a modern, intuitive user interface designed exclusively for administrators.
